@@ -43,7 +43,7 @@ namespace NextLevelDungeonCrawler.Models
         {
             animationController.Update(gameTime);
             animationController.position = this.position;
-            origin = new Vector2(animationController.animation.frameWidth  * 1.25f, animationController.position.Y + 35);
+            origin = new Vector2(animationController.position.X + 15, animationController.position.Y + 15);
 
 
             this.animationController.animation = regularAnimation;
@@ -58,7 +58,7 @@ namespace NextLevelDungeonCrawler.Models
             }
            
 
-            if (isHovering && Mouse.GetState().LeftButton == ButtonState.Pressed)
+            if (isHovering && Mouse.GetState().LeftButton == ButtonState.Pressed && isHovering)
             {
                 this.animationController.animation = clickAnimation;
                 if (canAddHeart)
@@ -81,29 +81,12 @@ namespace NextLevelDungeonCrawler.Models
                 canAddHeart = true;
             }
 
-             //Health Manipulation
-                //if (Keyboard.GetState().IsKeyDown(Keys.H) && canAddHeart)
-                //{
-                //    Animation heartAnimation = new Animation(Menu.heartTexture, 1);
-                //    AnimationController heart = new AnimationController(heartAnimation);
-                //    heart.position = new Vector2(300 + (30 * hearts.Count), 50);
-
-                //    hearts.Add(heart);
-
-                //    canAddHeart = false;
-                //}
-                //if (Keyboard.GetState().IsKeyUp(Keys.H))
-                //{
-                //    canAddHeart = true;
-                //}
-
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             animationController.Draw(spriteBatch);
-            spriteBatch.DrawString(Menu.menuFont, "Add a Heart", this.origin, Color.Black);
+            spriteBatch.DrawString(Menu.menuFont, "+1 HEART", this.origin, Color.Black);
         }
     }
 }

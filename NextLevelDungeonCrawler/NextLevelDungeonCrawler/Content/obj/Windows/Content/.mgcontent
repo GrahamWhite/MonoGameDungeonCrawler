@@ -6,6 +6,9 @@
   <SourceFiles>
     <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Font/menuFont.spritefont</File>
     <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/background.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/blueButton.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/blueButtonClick.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/blueButtonHighlight.png</File>
     <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/bullet.png</File>
     <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/button.png</File>
     <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/buttonClick.png</File>
@@ -22,6 +25,9 @@
     <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/spr_blob_big.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

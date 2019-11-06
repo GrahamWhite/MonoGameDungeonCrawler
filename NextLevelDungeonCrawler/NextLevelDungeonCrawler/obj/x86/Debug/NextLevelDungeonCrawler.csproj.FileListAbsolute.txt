@@ -107,3 +107,6 @@ C:\Users\graha\Documents\GitHub\MonoGameDungeonCrawler\NextLevelDungeonCrawler\N
 C:\Users\graha\Documents\GitHub\MonoGameDungeonCrawler\NextLevelDungeonCrawler\NextLevelDungeonCrawler\bin\Windows\x86\Debug\Content\Img\button.xnb
 C:\Users\graha\Documents\GitHub\MonoGameDungeonCrawler\NextLevelDungeonCrawler\NextLevelDungeonCrawler\bin\Windows\x86\Debug\Content\Img\buttonHighlight.xnb
 C:\Users\graha\Documents\GitHub\MonoGameDungeonCrawler\NextLevelDungeonCrawler\NextLevelDungeonCrawler\bin\Windows\x86\Debug\Content\Img\buttonClick.xnb
+C:\Users\graha\Documents\GitHub\MonoGameDungeonCrawler\NextLevelDungeonCrawler\NextLevelDungeonCrawler\bin\Windows\x86\Debug\Content\Img\blueButton.xnb
+C:\Users\graha\Documents\GitHub\MonoGameDungeonCrawler\NextLevelDungeonCrawler\NextLevelDungeonCrawler\bin\Windows\x86\Debug\Content\Img\blueButtonClick.xnb
+C:\Users\graha\Documents\GitHub\MonoGameDungeonCrawler\NextLevelDungeonCrawler\NextLevelDungeonCrawler\bin\Windows\x86\Debug\Content\Img\blueButtonHighlight.xnb

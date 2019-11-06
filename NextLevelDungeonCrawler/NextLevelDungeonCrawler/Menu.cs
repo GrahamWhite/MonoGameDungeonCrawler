@@ -33,10 +33,15 @@ namespace NextLevelDungeonCrawler
         public static Texture2D buttonHoverTexture;
         public static Texture2D buttonClickTexture;
 
-        
+        public static Texture2D blueButtonTexture;
+        public static Texture2D blueButtonHoverTexture;
+        public static Texture2D blueButtonClickTexture;
+
         public static float groundLevel = 600;
 
         public Button button;
+
+        bool showStats;
 
         public static SpriteFont menuFont;
         List<Enemy> enemies;
@@ -92,7 +97,11 @@ namespace NextLevelDungeonCrawler
             buttonTexture = Content.Load<Texture2D>("Img/button");
             buttonHoverTexture = Content.Load<Texture2D>("Img/buttonHighlight");
             buttonClickTexture = Content.Load<Texture2D>("Img/buttonClick");
-           
+
+            blueButtonTexture = Content.Load<Texture2D>("Img/blueButton");
+            blueButtonHoverTexture = Content.Load<Texture2D>("Img/blueButtonHighlight");
+            blueButtonClickTexture = Content.Load<Texture2D>("Img/blueButtonClick");
+
             pointerTexture = Content.Load<Texture2D>("Img/pointer");
           
             blobTexture = Content.Load<Texture2D>("Img/spr_blob");
@@ -105,8 +114,10 @@ namespace NextLevelDungeonCrawler
             player.position = new Vector2(200, 200);
 
             button = new Button();
-            button.position = new Vector2(300, 300);
-           
+            button.position = new Vector2(50, 50);
+
+       
+
 
             enemies = new List<Enemy>();
             enemyCanSpawn = true;
@@ -134,6 +145,15 @@ namespace NextLevelDungeonCrawler
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Tab))
+            {
+                showStats = true;
+            }
+            else
+            {
+                showStats = false;
+            }
 
 
             foreach (var enemy in enemies)
@@ -185,6 +205,7 @@ namespace NextLevelDungeonCrawler
             player.Update(gameTime);
             pointer.Update(gameTime);
             button.Update(gameTime, pointer, player);
+           
             base.Update(gameTime);
         }
 
@@ -199,23 +220,24 @@ namespace NextLevelDungeonCrawler
 
             spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
             button.Draw(spriteBatch);
+         
 
-            pointer.Draw(this.spriteBatch);
+          
             foreach (var enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
             player.Draw(spriteBatch);
+            pointer.Draw(this.spriteBatch);
 
-            // TODO: Add your drawing code here
-            
-            spriteBatch.DrawString(menuFont, "Game Editor", new Vector2(20, 20), Color.White);
-            spriteBatch.DrawString(menuFont, "Press WSAD to control the player", new Vector2(20, 40), Color.White);
-            spriteBatch.DrawString(menuFont, "Press SPACE to fire", new Vector2(20, 60), Color.White);
-            spriteBatch.DrawString(menuFont, $"Mouse Position: {pointer.position}", new Vector2(20, 80), Color.White);
-            spriteBatch.DrawString(menuFont, $"Player Position: {player.position}", new Vector2(20, 100), Color.White);
-            spriteBatch.DrawString(menuFont, $"Button Position: {button.position}", new Vector2(20, 120), Color.White);
-            
+            if (showStats)
+            {
+                spriteBatch.DrawString(menuFont, $"Mouse Position: {pointer.position}", new Vector2(20, 80), Color.White);
+                spriteBatch.DrawString(menuFont, $"Player Position: {player.position}", new Vector2(20, 100), Color.White);
+                spriteBatch.DrawString(menuFont, $"Heart Button Position: {button.position}", new Vector2(20, 120), Color.White);
+            }
+           
+
 
             spriteBatch.End();
 

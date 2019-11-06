@@ -13,7 +13,7 @@ namespace GameTestFoler.Models
 {
     public class PlatformerSprite
     {
-        //Animation animation;
+       
         Animation heroWalkingAnimation;       
         Animation heroIdleAnimation;
         Animation heroDeathAnimation;
@@ -51,8 +51,7 @@ namespace GameTestFoler.Models
 
         public PlatformerSprite(Animation animation)
         {
-            //this.animation = animation;
-           
+            
             heroWalkingAnimation = new Animation(Menu.playerWalking, 24);           
             heroIdleAnimation = new Animation(Menu.playerIdle, 18);
             heroDeathAnimation = new Animation(Menu.playerDead, 12);
@@ -60,7 +59,7 @@ namespace GameTestFoler.Models
             heroJumpingStartAnimation = new Animation(Menu.playerJumpingStart, 6);
             heroAttackingAnimation = new Animation(Menu.playerAttackingTexture, 12);
 
-            //animationController.Play(animation);
+         
             animationController = new AnimationController(this.heroIdleAnimation);
 
             spriteSpeed = 3f;            
@@ -88,54 +87,93 @@ namespace GameTestFoler.Models
             canAddHeart = true;
         }
 
-        //public void SetBulletAnimation(Texture2D texture) { bulletAnimation = new Animation(texture, 1);}
-        //public Animation GetAnimation() => animationController.animation;
-        //public void SetAnimation(Animation animation) { this.animation = animation; }
-
+       
         public void Update(GameTime gameTime)
         {
-           
-
-            
-            
-
+            //If alive
             if (hearts.Count == 0)
             {
                 this.animationController.animation = heroDeathAnimation;
-                           
+
                 this.animationController.animation.isLooping = false;
-
-
-               
+              
             }
             else
             {
-
-                
+                //this.animationController.animation.isLooping = true;
+                heroDeathAnimation.isLooping = true;
+                heroDeathAnimation.currentFrame = 0;
+                //A pressed
                 if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     position = new Vector2(position.X - spriteSpeed, position.Y);
-                    animationController.animation = heroWalkingAnimation;
-                    //animation.horizontalFlip = true;
+                    animationController.animation = heroWalkingAnimation;                    
                     animationController.Flip(true);
                     direction = Direction.LEFT;
                 }
 
+                //D pressed
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
                     position = new Vector2(position.X + spriteSpeed, position.Y);
-                    animationController.animation = heroWalkingAnimation;
-                    //animation.horizontalFlip = false;
+                    animationController.animation = heroWalkingAnimation;                   
                     animationController.Flip(false);
                     direction = Direction.RIGHT;
                 }               
 
+                //A & D not pressed -> set to idle animation
                 if (!Keyboard.GetState().IsKeyDown(Keys.D) && !Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                    animationController.animation = heroIdleAnimation;
                 }
 
-           
+                if (Keyboard.GetState().IsKeyDown(Keys.K))
+                {
+                    if (hearts.Count > 0)
+                    {
+                        hearts.RemoveAt(hearts.Count - 1);
+                    }
+                   
+                }
+
+
+
+                //Apply gravity
+                if (position.Y < GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - Menu.groundLevel && isJumping == false)
+                {
+                    position.Y += gravity;
+                    animationController.animation = heroJumpingAnimation;
+                }
+
+                //W pressed and ground level + animation height < this.position
+                if (Keyboard.GetState().IsKeyDown(Keys.W) &&  Menu.groundLevel  - animationController.animation.texture.Height <= this.position.Y)
+                {
+               
+                    jumpTimer = 0;                   
+                    canStart = true;
+                }
+
+                //W pressed -> jump
+                if (jumpTimer < jumpDuration && Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    animationController.animation = heroJumpingAnimation;
+                    // animationController.animation = heroJumpingStartAnimation;
+                 
+                    /// jump function
+                    if (animationController.animation.currentFrame < animationController.animation.frameCount - 1 && canStart)
+                    {                        
+                        animationController.animation = heroJumpingStartAnimation;
+                        
+                    }
+                    else
+                    {
+                        canStart = false;
+                    }                  
+
+                    jumpTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
+                    this.position.Y -= jumpVelocity;
+
+                }
 
                 //Health Manipulation
                 if (Keyboard.GetState().IsKeyDown(Keys.H) && canAddHeart)
@@ -148,21 +186,11 @@ namespace GameTestFoler.Models
 
                     canAddHeart = false;
                 }
-                if (Keyboard.GetState().IsKeyUp(Keys.H))
-                {
-                    canAddHeart = true;
-                }
 
-                if (Keyboard.GetState().IsKeyDown(Keys.K))
-                {
-                    if (hearts.Count > 0)
-                    {
-                        hearts.RemoveAt(hearts.Count - 1);
-                    }
-                }
+
+
 
                 //Bullet Manipulation
-
                 bulletTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -173,54 +201,13 @@ namespace GameTestFoler.Models
                     if (bulletTimer > bulletDelay)
                     {
                         Bullet bullet = new Bullet(new Animation(Menu.bulletTexture, 1), this.position);
-                        bullet.animationController.position = new Vector2(this.position.X + animationController.animation.frameWidth, position.Y + animationController.animation.frameHeight );
-                        bullet.direction = this.direction;                    
+                        bullet.animationController.position = new Vector2(this.position.X + animationController.animation.frameWidth, position.Y + animationController.animation.frameHeight);
+                        bullet.direction = this.direction;
                         bullets.Add(bullet);
 
                         bulletTimer = 0;
                     }
                 }
-
-                //Apply gravity
-                if (position.Y < GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - Menu.groundLevel && isJumping == false)
-                {
-                    position.Y += gravity;
-                    animationController.animation = heroJumpingAnimation;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.W) &&  Menu.groundLevel  - animationController.animation.texture.Height <= this.position.Y)
-                {
-               
-                    jumpTimer = 0;
-                    
-
-                    canStart = true;
-                }
-
-                if (jumpTimer < jumpDuration && Keyboard.GetState().IsKeyDown(Keys.W))
-                {
-                    animationController.animation = heroJumpingAnimation;
-
-                    if (animationController.animation.currentFrame < animationController.animation.frameCount - 1 && canStart)
-                    {
-                        
-                        animationController.animation = heroJumpingStartAnimation;
-                       
-
-                    }
-
-                    if (animationController.animation.currentFrame == animationController.animation.frameCount - 1)
-                    {
-                        canStart = false;
-
-                    }
-
-                    jumpTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
-                    this.position.Y -= jumpVelocity;
-
-                }
-
-
 
 
             }
