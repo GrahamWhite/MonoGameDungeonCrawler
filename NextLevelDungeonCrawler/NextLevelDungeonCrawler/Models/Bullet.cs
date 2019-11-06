@@ -16,7 +16,7 @@ namespace GameTestFoler.Models
         LEFT,
         RIGHT
     }
-    class Bullet
+    public class Bullet
     {
         public Animation animation;
         public AnimationController animationController;

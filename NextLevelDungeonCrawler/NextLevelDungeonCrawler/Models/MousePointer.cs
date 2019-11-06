@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace NextLevelDungeonCrawler.Models
 {
-    class MousePointer
+    public class MousePointer
     {
 
         Animation animation;
         AnimationController animationController;
 
         public Vector2 position;
+        public Vector2 origin;
 
         public MousePointer(Animation animation)
         {
@@ -28,8 +29,12 @@ namespace NextLevelDungeonCrawler.Models
 
         public void Update(GameTime gameTime)
         {
-            this.animationController.position = Mouse.GetState().Position.ToVector2();
-            this.position = animationController.position;
+            position = Mouse.GetState().Position.ToVector2();
+            animationController.position = this.position;
+
+            //origin = new Vector2(position.X + animationController.animation.frameWidth, position.Y + animationController.animation.frameHeight);
+            
+         
         }
 
         public void Draw(SpriteBatch spritebatch)

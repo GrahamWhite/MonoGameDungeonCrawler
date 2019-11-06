@@ -31,11 +31,14 @@ namespace NextLevelDungeonCrawler
 
         public static Texture2D buttonTexture;
         public static Texture2D buttonHoverTexture;
+        public static Texture2D buttonClickTexture;
 
         
         public static float groundLevel = 600;
 
-        SpriteFont menuFont;
+        public Button button;
+
+        public static SpriteFont menuFont;
         List<Enemy> enemies;
         PlatformerSprite player;
         MousePointer pointer;
@@ -85,6 +88,10 @@ namespace NextLevelDungeonCrawler
             playerAttackingTexture = Content.Load<Texture2D>("Img/heroAttacking");
             playerIdle = Content.Load<Texture2D>("Img/heroIdle");
             playerDead = Content.Load<Texture2D>("Img/heroDeath");
+
+            buttonTexture = Content.Load<Texture2D>("Img/button");
+            buttonHoverTexture = Content.Load<Texture2D>("Img/buttonHighlight");
+            buttonClickTexture = Content.Load<Texture2D>("Img/buttonClick");
            
             pointerTexture = Content.Load<Texture2D>("Img/pointer");
           
@@ -96,8 +103,10 @@ namespace NextLevelDungeonCrawler
 
             player = new PlatformerSprite(new Animation(playerWalking, 7));
             player.position = new Vector2(200, 200);
-            
 
+            button = new Button();
+            button.position = new Vector2(300, 300);
+           
 
             enemies = new List<Enemy>();
             enemyCanSpawn = true;
@@ -151,17 +160,17 @@ namespace NextLevelDungeonCrawler
             //Spawn Enemy
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && enemyCanSpawn)
             {
-                Random random = new Random((int)gameTime.TotalGameTime.Ticks);
+                //Random random = new Random((int)gameTime.TotalGameTime.Ticks);
 
 
-                Enemy enemy = new Enemy(new Animation(blobTexture, 5));
-                enemy.position = pointer.position;
-                enemies.Add(enemy);
-                enemyCanSpawn = false;
+                //Enemy enemy = new Enemy(new Animation(blobTexture, 5));
+                //enemy.position = pointer.position;
+                //enemies.Add(enemy);
+                //enemyCanSpawn = false;
             }
             if (Mouse.GetState().LeftButton == ButtonState.Released)
             {
-                enemyCanSpawn = true;
+                //enemyCanSpawn = true;
             }
             // TODO: Add your update logic here          
            
@@ -175,7 +184,7 @@ namespace NextLevelDungeonCrawler
 
             player.Update(gameTime);
             pointer.Update(gameTime);
-            
+            button.Update(gameTime, pointer, player);
             base.Update(gameTime);
         }
 
@@ -189,24 +198,25 @@ namespace NextLevelDungeonCrawler
             spriteBatch.Begin();
 
             spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
+            button.Draw(spriteBatch);
 
-            
             pointer.Draw(this.spriteBatch);
             foreach (var enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
             player.Draw(spriteBatch);
-           
-            // TODO: Add your drawing code here
 
+            // TODO: Add your drawing code here
+            
             spriteBatch.DrawString(menuFont, "Game Editor", new Vector2(20, 20), Color.White);
             spriteBatch.DrawString(menuFont, "Press WSAD to control the player", new Vector2(20, 40), Color.White);
             spriteBatch.DrawString(menuFont, "Press SPACE to fire", new Vector2(20, 60), Color.White);
-            spriteBatch.DrawString(menuFont, "Press LEFT_MOUSE_BUTTON to spawn an enemy", new Vector2(20, 80), Color.White);
-            spriteBatch.DrawString(menuFont, "Press H to add a heart", new Vector2(20, 100), Color.White);
-            spriteBatch.DrawString(menuFont, "Press K to kill the player", new Vector2(20, 120), Color.White);
-            spriteBatch.DrawString(menuFont, "* Dev Note: Jumpstart & Jump are still beta", new Vector2(20, 160), Color.White);
+            spriteBatch.DrawString(menuFont, $"Mouse Position: {pointer.position}", new Vector2(20, 80), Color.White);
+            spriteBatch.DrawString(menuFont, $"Player Position: {player.position}", new Vector2(20, 100), Color.White);
+            spriteBatch.DrawString(menuFont, $"Button Position: {button.position}", new Vector2(20, 120), Color.White);
+            
+
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 
 namespace GameTestFoler.Controllers
 {
-    class AnimationController
+    public class AnimationController
     {
 
         public Animation animation;
         public Vector2 position;
         public float scale;
+        public float rotation;
         private float timer;
-        private float rotation;
+        
         SpriteEffects flip;
 
         public AnimationController(Animation animation)
@@ -32,7 +33,8 @@ namespace GameTestFoler.Controllers
             spritebatch.Draw(animation.texture, 
                 new Rectangle((int)position.X, (int)position.Y, animation.frameWidth * (int)scale, animation.frameHeight * (int)scale), 
                 new Rectangle(animation.currentFrame * animation.frameWidth, 0, animation.frameWidth, animation.frameHeight), 
-                Color.White, rotation, 
+                Color.White, 
+                rotation, 
                 new Vector2(scale,scale), 
                 flip, 
                 0

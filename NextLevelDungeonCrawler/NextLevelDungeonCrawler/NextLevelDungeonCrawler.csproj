@@ -45,6 +45,7 @@
     <Compile Include="Menu.cs" />
     <Compile Include="Models\Animation.cs" />
     <Compile Include="Models\Bullet.cs" />
+    <Compile Include="Models\Button.cs" />
     <Compile Include="Models\Enemy.cs" />
     <Compile Include="Models\MousePointer.cs" />
     <Compile Include="Models\PlatformerSprite.cs" />

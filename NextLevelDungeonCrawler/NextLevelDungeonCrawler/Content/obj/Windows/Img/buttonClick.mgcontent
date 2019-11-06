@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroDeath.png</SourceFile>
-  <SourceTime>2019-11-04T18:27:04-05:00</SourceTime>
-  <DestFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/bin/Windows/Content/Img/heroDeath.xnb</DestFile>
-  <DestTime>2019-11-05T16:09:30.6644397-05:00</DestTime>
+  <SourceFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/buttonClick.png</SourceFile>
+  <SourceTime>2019-11-05T20:37:27.2838478-05:00</SourceTime>
+  <DestFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/bin/Windows/Img/buttonClick.xnb</DestFile>
+  <DestTime>2019-11-05T20:41:02.7012654-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

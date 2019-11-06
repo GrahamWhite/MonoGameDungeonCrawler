@@ -4,21 +4,27 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Font/menuFont.spritefont</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/background.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/bullet.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heart.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/hero.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroAttacking.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroDeath.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroIdle.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroJumping.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroJumpingStart.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/pointer.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/spr_blob.png</File>
-    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/spr_blob_big.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Font/menuFont.spritefont</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/background.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/bullet.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/button.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/buttonClick.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/buttonHighlight.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heart.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/hero.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroAttacking.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroDeath.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroIdle.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroJumping.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/heroJumpingStart.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/pointer.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/spr_blob.png</File>
+    <File>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/spr_blob_big.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

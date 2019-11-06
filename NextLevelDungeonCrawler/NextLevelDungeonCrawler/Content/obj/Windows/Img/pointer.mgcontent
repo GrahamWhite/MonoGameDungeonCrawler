@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/pointer.png</SourceFile>
+  <SourceFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/Img/pointer.png</SourceFile>
   <SourceTime>2019-11-04T18:11:50-05:00</SourceTime>
-  <DestFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/bin/Windows/Img/pointer.xnb</DestFile>
-  <DestTime>2019-11-05T13:12:27.5339114-05:00</DestTime>
+  <DestFile>C:/Users/graha/Documents/GitHub/MonoGameDungeonCrawler/NextLevelDungeonCrawler/NextLevelDungeonCrawler/Content/bin/Windows/Img/pointer.xnb</DestFile>
+  <DestTime>2019-11-05T20:41:03.0356011-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

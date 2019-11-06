@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace GameTestFoler.Models
 {
-    class PlatformerSprite
+    public class PlatformerSprite
     {
-        Animation animation;
+        //Animation animation;
         Animation heroWalkingAnimation;       
         Animation heroIdleAnimation;
         Animation heroDeathAnimation;
@@ -41,17 +41,18 @@ namespace GameTestFoler.Models
         public double jumpDuration;
 
         int health = 6;
-        List<AnimationController> hearts;
+        public List<AnimationController> hearts;
 
         public bool canAddHeart;
 
         public float hitDelay;
         public float hitTimer;
+        bool canStart;
 
         public PlatformerSprite(Animation animation)
         {
-            this.animation = animation;
-            animationController = new AnimationController(this.animation);
+            //this.animation = animation;
+           
             heroWalkingAnimation = new Animation(Menu.playerWalking, 24);           
             heroIdleAnimation = new Animation(Menu.playerIdle, 18);
             heroDeathAnimation = new Animation(Menu.playerDead, 12);
@@ -59,10 +60,10 @@ namespace GameTestFoler.Models
             heroJumpingStartAnimation = new Animation(Menu.playerJumpingStart, 6);
             heroAttackingAnimation = new Animation(Menu.playerAttackingTexture, 12);
 
-            animationController.Play(animation);
-            
-            spriteSpeed = 3f;
-            
+            //animationController.Play(animation);
+            animationController = new AnimationController(this.heroIdleAnimation);
+
+            spriteSpeed = 3f;            
             jumpVelocity = 10f;
             jumpTimer = 0;
             jumpDuration = 1200;
@@ -72,45 +73,50 @@ namespace GameTestFoler.Models
             bulletDelay = 600;
             hitDelay = 150;
             direction = Direction.RIGHT;
-            bullets = new List<Bullet>();
+           
             animationController.animation = heroIdleAnimation;
+
+            bullets = new List<Bullet>();
             hearts = new List<AnimationController>();
 
             //Add 1 Heart
             Animation heartAnimation = new Animation(Menu.heartTexture, 1);
             AnimationController heart = new AnimationController(heartAnimation);
             heart.position = new Vector2(300 + (30 * hearts.Count), 50);
-
             hearts.Add(heart);
 
             canAddHeart = true;
         }
 
-        public void SetBulletAnimation(Texture2D texture) { bulletAnimation = new Animation(texture, 1);}
-        public Animation GetAnimation() => animationController.animation;
-        public void SetAnimation(Animation animation) { this.animation = animation; }
+        //public void SetBulletAnimation(Texture2D texture) { bulletAnimation = new Animation(texture, 1);}
+        //public Animation GetAnimation() => animationController.animation;
+        //public void SetAnimation(Animation animation) { this.animation = animation; }
 
         public void Update(GameTime gameTime)
         {
            
 
-
+            
             
 
             if (hearts.Count == 0)
             {
                 this.animationController.animation = heroDeathAnimation;
-                this.animation.frameSpeed = 300;
+                           
                 this.animationController.animation.isLooping = false;
+
+
+               
             }
             else
             {
 
+                
                 if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     position = new Vector2(position.X - spriteSpeed, position.Y);
                     animationController.animation = heroWalkingAnimation;
-                    animation.horizontalFlip = true;
+                    //animation.horizontalFlip = true;
                     animationController.Flip(true);
                     direction = Direction.LEFT;
                 }
@@ -119,18 +125,10 @@ namespace GameTestFoler.Models
                 {
                     position = new Vector2(position.X + spriteSpeed, position.Y);
                     animationController.animation = heroWalkingAnimation;
-                    animation.horizontalFlip = false;
+                    //animation.horizontalFlip = false;
                     animationController.Flip(false);
                     direction = Direction.RIGHT;
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.K))
-                {
-                    if (hearts.Count > 0)
-                    {
-                        hearts.RemoveAt(hearts.Count - 1);
-                    }
-                }
+                }               
 
                 if (!Keyboard.GetState().IsKeyDown(Keys.D) && !Keyboard.GetState().IsKeyDown(Keys.A))
                 {
@@ -139,6 +137,7 @@ namespace GameTestFoler.Models
 
            
 
+                //Health Manipulation
                 if (Keyboard.GetState().IsKeyDown(Keys.H) && canAddHeart)
                 {
                     Animation heartAnimation = new Animation(Menu.heartTexture, 1);
@@ -154,11 +153,17 @@ namespace GameTestFoler.Models
                     canAddHeart = true;
                 }
 
-               
+                if (Keyboard.GetState().IsKeyDown(Keys.K))
+                {
+                    if (hearts.Count > 0)
+                    {
+                        hearts.RemoveAt(hearts.Count - 1);
+                    }
+                }
 
+                //Bullet Manipulation
 
-                    bulletTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
+                bulletTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 {
@@ -168,7 +173,7 @@ namespace GameTestFoler.Models
                     if (bulletTimer > bulletDelay)
                     {
                         Bullet bullet = new Bullet(new Animation(Menu.bulletTexture, 1), this.position);
-                        bullet.animationController.position = new Vector2(this.position.X + animation.frameWidth, position.Y + animation.frameHeight );
+                        bullet.animationController.position = new Vector2(this.position.X + animationController.animation.frameWidth, position.Y + animationController.animation.frameHeight );
                         bullet.direction = this.direction;                    
                         bullets.Add(bullet);
 
@@ -176,30 +181,40 @@ namespace GameTestFoler.Models
                     }
                 }
 
-           
+                //Apply gravity
+                if (position.Y < GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - Menu.groundLevel && isJumping == false)
+                {
+                    position.Y += gravity;
+                    animationController.animation = heroJumpingAnimation;
+                }
 
-                if (Keyboard.GetState().IsKeyDown(Keys.W) &&  Menu.groundLevel  - this.animation.texture.Height <= this.position.Y)
+                if (Keyboard.GetState().IsKeyDown(Keys.W) &&  Menu.groundLevel  - animationController.animation.texture.Height <= this.position.Y)
                 {
                
                     jumpTimer = 0;
-                    animationController.animation = heroJumpingStartAnimation;
                     
+
+                    canStart = true;
                 }
 
                 if (jumpTimer < jumpDuration && Keyboard.GetState().IsKeyDown(Keys.W))
                 {
-                    if (animationController.animation.currentFrame < animationController.animation.frameCount)
+                    animationController.animation = heroJumpingAnimation;
+
+                    if (animationController.animation.currentFrame < animationController.animation.frameCount - 1 && canStart)
                     {
                         
                         animationController.animation = heroJumpingStartAnimation;
+                       
 
-                        if (animationController.animation.currentFrame == animation.frameCount)
-                        {
-                            animationController.animation = heroJumpingAnimation;
-                        }
                     }
-                    
-                   
+
+                    if (animationController.animation.currentFrame == animationController.animation.frameCount - 1)
+                    {
+                        canStart = false;
+
+                    }
+
                     jumpTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
                     this.position.Y -= jumpVelocity;
 
@@ -214,12 +229,7 @@ namespace GameTestFoler.Models
 
 
 
-            //Apply gravity
-            if (position.Y < GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - Menu.groundLevel && isJumping == false) 
-            {
-                position.Y += gravity;
-               
-            }
+           
            
 
             foreach (var bullet in bullets)
