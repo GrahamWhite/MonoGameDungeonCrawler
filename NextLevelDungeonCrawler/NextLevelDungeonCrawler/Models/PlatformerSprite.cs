@@ -39,8 +39,7 @@ namespace GameTestFoler.Models
         bool isJumping = false;
         public Direction direction;
         public double jumpDuration;
-
-        int health = 6;
+       
         public List<AnimationController> hearts;
 
         public bool canAddHeart;
@@ -95,8 +94,7 @@ namespace GameTestFoler.Models
             {
                 this.animationController.animation = heroDeathAnimation;
 
-                this.animationController.animation.isLooping = false;
-              
+                this.animationController.animation.isLooping = false;              
             }
             else
             {

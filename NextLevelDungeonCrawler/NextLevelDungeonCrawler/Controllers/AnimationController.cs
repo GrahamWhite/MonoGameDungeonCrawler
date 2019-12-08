@@ -11,7 +11,6 @@ namespace GameTestFoler.Controllers
 {
     public class AnimationController
     {
-
         public Animation animation;
         public Vector2 position;
         public float scale;
